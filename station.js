@@ -8,6 +8,44 @@
 //------------------------------------------------------------------------------------------------------------------
 // DRIVER CODE: Do **NOT** change anything below this point. Your task is to implement code above to make this work.
 //------------------------------------------------------------------------------------------------------------------
+var station = {
+  name: "Divvy",
+  location: "Wood & Division",
+  bikes: []
+};
+
+station.replenish = function(bikeArray){
+  bikeArray.forEach(function(bike){
+    station.bikes.push(bike);
+  });
+};
+
+  station.selectByColor = function(color){
+    return station.bikes.filter(function(bike){
+      return bike.color === color;
+    });
+};
+  station.mostRecent = function(){
+    return station.bikes.filter(function(bike){
+      return bike.brandNew();
+    });
+  };
+
+
+
+var Bike = function(id, color, year){
+  this.id = id;
+  this.color = color;
+  this.year = year;
+};
+
+Bike.prototype.brandNew = function(){
+  if (this.year >= 2014){
+    return true;
+  } else {
+    return false;
+  }
+};
 
 function assert(test, message) {
   if (!test) {
